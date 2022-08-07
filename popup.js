@@ -15,13 +15,10 @@ chrome.storage.sync.get("inputText", (result) => {
 });
 
 button.addEventListener("click", async () => {
-  let url = currentTab.url;
-  let query = url.split("q=")[1].split("&")[0].replaceAll("+", " ");
   let message = {
     type: "button",
-    text: query,
+    text: inputText.value,
   };
-  inputText.value = message.text;
   chrome.tabs.sendMessage(currentTab.id, message);
 });
 
